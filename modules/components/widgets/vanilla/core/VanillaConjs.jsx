@@ -7,7 +7,7 @@ export default ({id, not, setNot, conjunctionOptions, setConjunction, disabled, 
   const renderOptions = () => 
     Object.keys(conjunctionOptions).map(key => {
       const {id, name, label, checked} = conjunctionOptions[key];
-      let postfix = setConjunction.isDummyFn ? "__dummy" : "";
+      const postfix = setConjunction.isDummyFn ? "__dummy" : "";
       return [
         <input key={id+postfix} type="radio" id={id+postfix} name={name+postfix} checked={checked} disabled={readonly} value={key} onChange={onChange} />
         ,

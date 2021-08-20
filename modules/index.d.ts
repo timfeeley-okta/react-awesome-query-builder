@@ -275,6 +275,13 @@ export interface ButtonProps {
   config?: Config,
 }
 
+export interface CheckboxProps {
+  value: boolean,
+  setValue(newValue?: boolean): void,
+  label: string,
+  config?: Config,
+}
+
 export interface ButtonGroupProps {
   children: ReactElement,
   config?: Config,
@@ -578,6 +585,7 @@ export interface LocaleSettings {
   funcPlaceholder?: string,
   funcLabel?: string,
   operatorPlaceholder?: string,
+  lockLabel?: string,
   deleteLabel?: string,
   addGroupLabel?: string,
   addRuleLabel?: string,
@@ -604,6 +612,7 @@ export interface RenderSettings {
   renderConjs?: Factory<ConjsProps>,
   renderButton?: Factory<ButtonProps>,
   renderButtonGroup?: Factory<ButtonGroupProps>,
+  renderCheckbox?: Factory<CheckboxProps>,
   renderProvider?: Factory<ProviderProps>,
   renderValueSources?: Factory<ValueSourcesProps>,
   renderConfirm?: ConfirmFunc,
@@ -631,6 +640,7 @@ export interface BehaviourSettings {
   canReorder?: boolean,
   canRegroup?: boolean,
   showNot?: boolean,
+  showLock?: boolean,
   maxNesting?: number,
   setOpOnChangeField: Array<ChangeFieldStrategy>,
   clearValueOnChangeField?: boolean,
@@ -775,6 +785,7 @@ interface VanillaWidgets {
   // vanilla core widgets
   VanillaFieldSelect: ElementType<FieldProps>,
   VanillaConjs: ElementType<ConjsProps>,
+  VanillaCheckbox: ElementType<CheckboxProps>,
   VanillaButton: ElementType<ButtonProps>,
   VanillaButtonGroup: ElementType<ButtonGroupProps>,
   VanillaProvider: ElementType<ProviderProps>,
