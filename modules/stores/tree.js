@@ -122,6 +122,14 @@ const setNot = (state, path, not) =>
 /**
  * @param {Immutable.Map} state
  * @param {Immutable.List} path
+ * @param {bool} lock
+ */
+const setLock = (state, path, lock) =>
+  state.setIn(expandTreePath(path, "properties", "isLocked"), lock);
+
+/**
+ * @param {Immutable.Map} state
+ * @param {Immutable.List} path
  * @param {string} conjunction
  */
 const setConjunction = (state, path, conjunction) =>
@@ -610,6 +618,9 @@ export default (config) => {
 
     case constants.SET_NOT:
       return Object.assign({}, state, {...unset}, {tree: setNot(state.tree, action.path, action.not)});
+
+    case constants.SET_LOCK:
+      return Object.assign({}, state, {...unset}, {tree: setLock(state.tree, action.path, action.lock)});
 
     case constants.SET_FIELD:
       return Object.assign({}, state, {...unset}, {tree: setField(state.tree, action.path, action.field, action.config)});

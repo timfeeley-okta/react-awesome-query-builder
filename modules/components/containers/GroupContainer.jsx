@@ -22,6 +22,7 @@ const createGroupContainer = (Group) =>
       reordableNodesCnt: PropTypes.number,
       field: PropTypes.string, // for RuleGroup
       parentField: PropTypes.string, //from RuleGroup
+      isLocked: PropTypes.bool,
       //connected:
       dragging: PropTypes.object, //{id, x, y, w, h}
       isDraggingTempo: PropTypes.bool,
@@ -174,6 +175,7 @@ const createGroupContainer = (Group) =>
               selectedField={this.props.field || null}
               parentField={this.props.parentField || null}
               selectedOperator={this.props.operator || null}
+              isLocked={this.props.isLocked}
             /> : null
             ,
             <Group
@@ -206,6 +208,7 @@ const createGroupContainer = (Group) =>
               selectedField={this.props.field || null}
               parentField={this.props.parentField || null}
               selectedOperator={this.props.operator || null}
+              isLocked={this.props.isLocked}
             />
           ]}
         </div>

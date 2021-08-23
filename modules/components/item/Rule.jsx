@@ -260,8 +260,7 @@ class Rule extends PureComponent {
     renderLock() {
       const {config, isLocked, id} = this.props;
       const {
-        lockLabel, 
-        showLock,
+        lockLabel, showLock,
         renderCheckbox: Checkbox
       } = config.settings;
       
