@@ -348,7 +348,7 @@ export interface ProximityOptions extends ProximityConfig {
 
 interface BaseOperator {
   label: string,
-  reversedOp: string,
+  reversedOp?: string,
   cardinality?: number,
   formatOp?: FormatOperator,
   labelForFormat?: string,
