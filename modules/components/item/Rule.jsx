@@ -7,7 +7,7 @@ import FieldWrapper from "../rule/FieldWrapper";
 import Widget from "../rule/Widget";
 import OperatorOptions from "../rule/OperatorOptions";
 import {getFieldConfig, getOperatorConfig, getFieldWidgetConfig} from "../../utils/configUtils";
-import {getFieldPathLabels} from "../../utils/ruleUtils";
+import {getFieldPathLabels, getValueSourcesForFieldOp} from "../../utils/ruleUtils";
 import {useOnPropsChanged} from "../../utils/reactUtils";
 import {Col, DragIcon, dummyFn, ConfirmFn} from "../utils";
 const classNames = require("classnames");
@@ -70,7 +70,9 @@ class Rule extends PureComponent {
       const selectedOperatorConfig = getOperatorConfig(config, selectedOperator, selectedField);
       const selectedOperatorHasOptions = selectedOperatorConfig && selectedOperatorConfig.options != null;
       const selectedFieldWidgetConfig = getFieldWidgetConfig(config, selectedField, selectedOperator) || {};
-      const isOnlyValue = selectedField && selectedFieldConfig.valueSources.length == 1 && selectedFieldConfig.valueSources[0] == "value";
+      //const valueSources = selectedFieldConfig.valueSources;
+      const valueSources = getValueSourcesForFieldOp(config, selectedField, selectedOperator, selectedFieldConfig);
+      const isOnlyValue = selectedField && valueSources.length == 1 && valueSources[0] == "value";
       const hideOperator = selectedFieldWidgetConfig.hideOperator && isOnlyValue;
 
       const showDragIcon = config.settings.canReorder && reordableNodesCnt > 1;
